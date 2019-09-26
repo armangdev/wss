@@ -1,5 +1,11 @@
+const express = require('express')
+const app = express()
+const http = require('http')
+const server = http.createServer(app)
+
 const WebSocketServer = require("ws").Server;
 const wss = new WebSocketServer({ port: 9090 });
+
 const port = process.env.PORT || 3000
 
 
@@ -43,5 +49,6 @@ if( process.env.NODE_ENV === "production"){
 
 // 
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server is on ${PORT}`));
+server.listen(port, () => {
+  console.log(`Server is up on port ${port}!`)
+})
